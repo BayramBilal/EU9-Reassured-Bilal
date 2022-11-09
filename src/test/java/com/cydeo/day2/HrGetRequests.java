@@ -8,19 +8,20 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HrGetRequests {
 
     @BeforeAll
     public static void init(){
 
-        RestAssured.baseURI = "http://54.88.101.116:1000/ords/hr";
+        baseURI = "http://54.88.101.116:1000/ords/hr";
     }
     @DisplayName("GET request to /regions")
     @Test
     public void test1(){
-        Response response = RestAssured.get("regions");
+        Response response = get("regions");
         System.out.println("response.statusCode() = " + response.statusCode());
 
 
@@ -42,9 +43,9 @@ public class HrGetRequests {
         System.out.println("response.statusCode() = " + response.statusCode());
         System.out.println("response.contentType() = " + response.contentType());
 
-        Assertions.assertEquals(response.statusCode(), 200);
-        Assertions.assertEquals(response.contentType(), "application/json");
+        assertEquals(response.statusCode(), 200);
+        assertEquals(response.contentType(), "application/json");
         response.prettyPrint();
-        Assertions.assertTrue(response.body().asString().contains("Americas"));
+        assertTrue(response.body().asString().contains("Americas"));
     }
 }

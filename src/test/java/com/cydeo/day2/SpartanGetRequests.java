@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class SpartanGetRequests {
 
 
@@ -97,6 +100,18 @@ public class SpartanGetRequests {
 
 
     }
+    @DisplayName("GET request to /api/spartans/10")
+    @Test
+    public void test4(){
+        Response response = given()
+                .accept(ContentType.XML)
+                .when()
+                .get(baseUrl+"/api/spartans/10");
 
+        //verify status code is 406
+        Assertions.assertEquals(406,response.statusCode());
 
+        //verify content type
+        assertEquals("application/xml;charset=UTF-8",response.contentType());
+    }
 }
