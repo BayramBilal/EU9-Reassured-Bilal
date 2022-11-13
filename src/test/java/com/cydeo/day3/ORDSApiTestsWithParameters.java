@@ -46,7 +46,23 @@ public class ORDSApiTestsWithParameters {
         response.prettyPrint();
     }
 
+    @DisplayName ("GET request to /employees with query param")
+    @Test
+    public void test2(){
+        Response response = given().accept(ContentType.JSON)
+                .and().queryParam("q", "{\"job_id\": \"IT_PROG\"}")
+                .log().all()
+                .when().get("/employees");
+        System.out.println("response.statusCode() = " + response.statusCode());
+        System.out.println("response.contentType() = " + response.contentType());
 
+        assertEquals(200, response.statusCode());
+        assertEquals("application/json", response.header("Content-Type"));
+
+        assertTrue(response.body().asString().contains("IT_PROG"));
+
+        response.prettyPrint();
+    }
 
 
 
