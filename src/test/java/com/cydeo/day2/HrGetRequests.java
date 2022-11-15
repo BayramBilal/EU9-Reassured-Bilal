@@ -48,4 +48,21 @@ public class HrGetRequests {
         response.prettyPrint();
         assertTrue(response.body().asString().contains("Americas"));
     }
-}
+
+
+    @Test
+    public void test3(){
+
+        Response response = given().accept(ContentType.JSON)
+                .when()
+                .get("/departments");
+        System.out.println("response.statusCode() = " + response.statusCode());
+        System.out.println("response.contentType() = " + response.contentType());
+
+        assertEquals(response.statusCode(), 200);
+        assertEquals(response.contentType(), "application/json");
+        response.prettyPeek();
+
+    }
+
+    }

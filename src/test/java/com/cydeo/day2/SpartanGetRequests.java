@@ -114,4 +114,40 @@ public class SpartanGetRequests {
         //verify content type
         assertEquals("application/xml;charset=UTF-8",response.contentType());
     }
-}
+
+    String baUrl = "https://api.training.cydeo.com";
+
+    @Test
+    public void getAllStudents(){
+
+        Response response = RestAssured.given().accept(ContentType.JSON)
+                .when().get(baUrl + "/student/all");
+
+        System.out.println("response.statusCode() = " + response.statusCode());
+
+        response.prettyPrint();
+    }
+    @Test
+    public void getAllTeachers(){
+
+        Response response = RestAssured.given().accept(ContentType.JSON)
+                .when().get(baUrl + "/teacher/all");
+
+        System.out.println("response.statusCode() = " + response.statusCode());
+
+        response.prettyPrint();
+    }
+    @Test
+    public void getAllStudentId(){
+
+        Response response = RestAssured.given().accept(ContentType.JSON)
+                .when().get(baUrl + "/student/15");
+
+        String id =  response.path("students.studentId").toString();
+        assertEquals("[15]", id);
+        assertEquals("[Leopold]",response.path("students.firstName").toString());
+
+        response.prettyPrint();
+    }
+
+    }
