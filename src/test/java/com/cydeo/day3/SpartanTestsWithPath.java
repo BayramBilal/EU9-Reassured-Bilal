@@ -16,7 +16,7 @@ public class SpartanTestsWithPath {
 
 
     @BeforeAll
-    public static void init() {
+    public static void setUpClass() {
         //save baseurl inside this variable so that we dont need to type each http method.
         baseURI = "http://54.88.101.116:8000";
 
