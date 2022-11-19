@@ -12,6 +12,22 @@ public class Link {
     private String rel;
     private String href;
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    public String getRel() {
 //        return rel;
 //    }
@@ -35,4 +51,3 @@ public class Link {
 //                ", href='" + href + '\'' +
 //                '}';
 //    }
-}

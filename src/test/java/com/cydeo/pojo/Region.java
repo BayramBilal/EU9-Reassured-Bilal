@@ -1,6 +1,7 @@
 package com.cydeo.pojo;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,10 +12,13 @@ import java.util.List;
 @ToString
 
 public class Region {
-
-    private int region_id;
+//region_id
+    @JsonProperty("region_id")
+    private int regionId;
+    @JsonProperty("region_name")
     private String region_name;
-    private List<Link> links;
+    @JsonProperty("links")
+      private List<Link> links;
 
     }
 

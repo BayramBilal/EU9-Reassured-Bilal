@@ -6,16 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @Setter
 @Getter
 @ToString
 @JsonIgnoreProperties (ignoreUnknown = true)
-public class Regions {
-    private List<Region> items;
-    private int count;
+public class ZipCode {
+    @JsonProperty ("zipCode")
+    private int zipcode;
 
 }
-
-
