@@ -33,7 +33,10 @@ public class PutAndPatchRequestDemo extends SpartanTestBase {
                 .when().put("/api/spartans/{id}")
                 .then().statusCode(204);
 
-
+    }
+        @DisplayName ("PUT request to one spartan for update with Map")
+        @Test
+        public void PUTRequestCheck(){
         //send a GET request after update, make sure updated field changed, or the new info matching
         //with requestBody that we send
 
@@ -46,10 +49,7 @@ public class PutAndPatchRequestDemo extends SpartanTestBase {
         assertEquals("Nihal", response.path("name"));
         assertEquals("Female", response.path("gender"));
 
-
-
-
-    }
+        }
 
     @DisplayName("PATCH request to one spartan for partial update with Map")
     @Test
@@ -64,20 +64,24 @@ public class PutAndPatchRequestDemo extends SpartanTestBase {
                 .and().pathParam("id", 129)
                 .when().patch("/api/spartans/{id}")
                 .then().statusCode(204);
+    }
+        @DisplayName("PATCH request to one spartan for partial update with Map")
+        @Test
+        public void PATCHRequestCheck(){
 
         //send a GET request after update, make sure updated field changed, or the new info matching
         //with requestBody that we send
-//        Response response = given().accept(ContentType.JSON)
-//                .and().pathParam("id",129)
-//                .when().get("/api/spartans/{id}");
-//
-//        assertEquals(200,response.statusCode());
-//        assertEquals("application/json",response.contentType());
-//        assertEquals("Hilal", response.path("name"));
+        Response response = given().accept(ContentType.JSON)
+                .and().pathParam("id",129)
+                .when().get("/api/spartans/{id}");
 
-//        System.out.println(response.path("name").toString());
-//        System.out.println(response.path("phone").toString());
-//        System.out.println(response.path("gender").toString());
+        assertEquals(200,response.statusCode());
+        assertEquals("application/json",response.contentType());
+        assertEquals("Hilal", response.path("name"));
+
+        System.out.println(response.path("name").toString());
+        System.out.println(response.path("phone").toString());
+        System.out.println(response.path("gender").toString());
     }
     @DisplayName("DELETE one spartan")
     @Test
@@ -88,13 +92,19 @@ public class PutAndPatchRequestDemo extends SpartanTestBase {
           given().pathParam("id", idToDelete)
                 .when().delete("/api/spartans/{id}")
                 .then().statusCode(204);
+
+    }
+
+       @DisplayName("DELETE one spartan")
+        @Test
+        public void deleteSpartanCheck(){
         //send a get request after you delete make sure you are getting 404
 
-//        Response response = given().accept(ContentType.JSON)
-//                .and().pathParam("id",127)
-//                .when().get("/api/spartans/{id}");
-//
-//        assertEquals(404,response.statusCode());
+        Response response = given().accept(ContentType.JSON)
+                .and().pathParam("id",127)
+                .when().get("/api/spartans/{id}");
+
+        assertEquals(404,response.statusCode());
     }
 
 }

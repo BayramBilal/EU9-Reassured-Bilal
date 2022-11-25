@@ -1,20 +1,11 @@
 package com.cydeo.Practice;
 
-
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-
-import io.restassured.response.Response;
-import io.restassured.response.Response.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-
 import static io.restassured.RestAssured.baseURI;
-
-
 
 public class SpartanTestWithHamcrest {
 
@@ -45,6 +36,7 @@ public class SpartanTestWithHamcrest {
         RestAssured.given().accept(ContentType.JSON)
                         .and().pathParam("id", 15)
                         .when().get(baseURI + "/api/spartans/{id}")
+                // response
                         .then().statusCode(200).and()
                         .assertThat().contentType("application/json")
                         .assertThat().body("id", equalTo(15), "name",is("Meta"),

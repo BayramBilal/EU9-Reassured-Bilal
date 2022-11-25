@@ -88,9 +88,6 @@ public class SpartanPostRequestDemo extends SpartanTestBase {
         assertThat(response.path("data.gender"),is("Male"));
         assertThat(response.path("data.phone"),is(8877445596l));
 
-
-
-
         response.prettyPrint();
 
 
@@ -121,6 +118,7 @@ public class SpartanPostRequestDemo extends SpartanTestBase {
         assertThat(response.path("data.name"),is("SeverusSpartan"));
         assertThat(response.path("data.gender"),is("Male"));
         assertThat(response.path("data.phone"),is(8877445596L));
+        System.out.println("response.statusCode() = " + response.statusCode());
 
         response.prettyPrint();
 
