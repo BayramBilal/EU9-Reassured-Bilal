@@ -1,11 +1,13 @@
 package com.cydeo.Review_week3;
 
-import io.restassured.http.*;
-import io.restassured.response.*;
-import org.junit.jupiter.api.*;
-import week2.pojo.Spartan;
+import com.cydeo.Review_week2.pojo.Spartan;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;

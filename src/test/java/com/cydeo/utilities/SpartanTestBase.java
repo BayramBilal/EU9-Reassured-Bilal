@@ -14,10 +14,10 @@ public class SpartanTestBase {
     @BeforeAll
     public static void init(){
         //save baseurl inside this variable so that we dont need to type each http method.
-        baseURI = "http://54.88.101.116:8000";
+        baseURI = "http://3.91.214.5:8000";
 
         //get ip address from configurations
-        String dbUrl = "jdbc:oracle:thin:@54.88.101.116:1521:xe";
+        String dbUrl = "jdbc:oracle:thin:@3.91.214.5:1521:xe";
       //  String dbUsername = "SP";
         //  String dbPassword = "SP";
 

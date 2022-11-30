@@ -10,10 +10,10 @@ public abstract class HRTestBase {
     @BeforeAll
     public static void init(){
 
-        baseURI = "http://54.88.101.116:1000/ords/hr";
+        baseURI = "http://3.91.214.5:1000/ords/hr";
 
         // get ip adress from configurations
-        String dbUrl = "jdbc:oracle:thin:@54.88.101.116:1521:xe";
+        String dbUrl = "jdbc:oracle:thin:@3.91.214.5:1521:xe";
         String dbUsername = "SP";
         String dbPassword = "SP";
 
