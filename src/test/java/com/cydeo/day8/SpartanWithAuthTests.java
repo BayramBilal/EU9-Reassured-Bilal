@@ -43,7 +43,7 @@ public class SpartanWithAuthTests extends SpartanAuthTestBase {
         given().auth().basic("editor", "editor")
                 .and().accept(ContentType.JSON)
                 .and().pathParam("id", "101")
-                .when().get("/api/spartans/{id}")
+                .when().delete("/api/spartans/{id}")
                 .then().statusCode(403)
                 .log().body();
 }

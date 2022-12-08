@@ -21,18 +21,19 @@ public class SpartanPOSTRequests {
     public static void setUpClass(){
 
 
-        baseURI = "http://54.88.101.116:8000";
+        baseURI = "http://3.91.214.5:7000";
     }
     @Test
     public void PostWithString(){
 
         // sending as a string
-        Response response =  given().accept(ContentType.JSON)
+        Response response =  given().auth().basic("admin", "admin")
+                .accept(ContentType.JSON)
                 .and().contentType(ContentType.JSON)
                 .body("{\n" +
-                        "    \"name\": \"Melih\",\n" +
+                        "    \"name\": \"Murat\",\n" +
                         "    \"gender\": \"Male\",\n" +
-                        "    \"phone\": 2348695106\n" +
+                        "    \"phone\": 2248695106\n" +
                         "}\n")
                 .when().post("/api/spartans/");
 
@@ -48,9 +49,9 @@ public class SpartanPOSTRequests {
         // verify request body
         JsonPath jsonPath = response.jsonPath();
 
-        assertEquals(jsonPath.getString("data.name"), "Melih");
+        assertEquals(jsonPath.getString("data.name"), "Murat");
         assertEquals(jsonPath.getString("data.gender"), "Male");
-        assertEquals(jsonPath.getLong("data.phone"), 2348695106l);
+        assertEquals(jsonPath.getLong("data.phone"), 2248695106l);
 }
     @Test
     public void PostWithMap(){
@@ -58,12 +59,12 @@ public class SpartanPOSTRequests {
         // sending a map to be used as a body for post request
 
         Map<String, Object> requestMap = new HashMap<>();
-        requestMap.put("name", "Tareq");
+        requestMap.put("name", "Bebeto");
         requestMap.put("gender", "Male");
-        requestMap.put("phone", 56565757567l);
+        requestMap.put("phone", 12365757567l);
 
 
-       Response response =  given().accept(ContentType.JSON)
+       Response response =  given().auth().basic("admin", "admin").accept(ContentType.JSON)
                 .and().contentType(ContentType.JSON)
                 .body(requestMap)
                 .when().post("/api/spartans/");
@@ -77,11 +78,11 @@ public class SpartanPOSTRequests {
         // create spartan object and used as a body for post request
 
         Spartan spartanPojo = new Spartan();
-        spartanPojo.setName("Ahmet");
+        spartanPojo.setName("Romario");
         spartanPojo.setGender("Male");
-        spartanPojo.setPhone(5454545265l);
+        spartanPojo.setPhone(3334545265l);
 
-        Response response =  given().accept(ContentType.JSON)
+        Response response =  given().auth().basic("admin", "admin").accept(ContentType.JSON)
                 .and().contentType(ContentType.JSON)
                 .body(spartanPojo)
                 .when().post("/api/spartans/");
@@ -94,12 +95,29 @@ public class SpartanPOSTRequests {
        @Test
         public void GetREquestWithPOJO(){
 
-           Response response1 = given().accept(ContentType.JSON)
-                .and().pathParam("id", 138)
+           Response response1 = given().auth().basic("admin", "admin").accept(ContentType.JSON)
+                .and().pathParam("id", 141)
                 .when().get("/api/spartans/{id}");
 
         Spartan spartanResponse = response1.as(Spartan.class);
         System.out.println("spartanResponse = " + spartanResponse.toString());
+
+    }
+    @Test
+    public void PutRequest(){
+
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("name", "Hasan");
+        requestMap.put("gender", "Male");
+        requestMap.put("phone", 44445757567l);
+
+
+        Response response =  given().auth().basic("admin", "admin").accept(ContentType.JSON)
+                .and().contentType(ContentType.JSON)
+                .and().pathParam("id", 177)
+                .body(requestMap)
+               .when().put("/api/spartans/{id}");
+
 
     }
 }

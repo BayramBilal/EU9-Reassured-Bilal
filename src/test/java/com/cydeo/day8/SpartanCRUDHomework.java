@@ -37,9 +37,9 @@ public class SpartanCRUDHomework extends SpartanAuthTestBase {
     public void PostWithMethodOfMap(){
 
         Map<String, Object> requestJsonMap = new LinkedHashMap<>();
-        requestJsonMap.put("name", "Nihal");
-        requestJsonMap.put("gender", "Female");
-        requestJsonMap.put("phone", 5455259095l);
+        requestJsonMap.put("name", "Selim");
+        requestJsonMap.put("gender", "Male");
+        requestJsonMap.put("phone", 3335259095l);
 
         Response response =  given().auth().basic("admin", "admin")
                 .and().accept(ContentType.JSON)
@@ -56,9 +56,9 @@ public class SpartanCRUDHomework extends SpartanAuthTestBase {
         String  expectedResponseMessage ="A Spartan is Born!";
         assertThat(response.path("success"), is(expectedResponseMessage));
 
-        assertThat(response.path("data.name"),is("Nihal"));
-        assertThat(response.path("data.gender"),is("Female"));
-       assertThat(response.path("data.phone"),is(5455259095l));
+        assertThat(response.path("data.name"),is("Selim"));
+        assertThat(response.path("data.gender"),is("Male"));
+       assertThat(response.path("data.phone"),is(3335259095l));
         System.out.println("response.statusCode() = " + response.statusCode());
 
 
